@@ -19,10 +19,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>alif</td>
-                                    <td>devlopment</td>
+                                <tr v-for="category in categories" :key="category.id">
+                                    <td>{{category.id}}</td>
+                                    <td>{{category.name}}</td>
+                                    <td>{{category.slug}}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary btn-sm"> edit</a>
                                         <a href="#" class="btn btn-danger btn-sm"> delete</a>
@@ -40,8 +40,20 @@
 
 <script>
     export default {
+         data(){
+            return{
+                categories: [],
+            }
+        },
+        methods:{
+            loadCategories(){
+                axios.get('/api/category').then(response =>{
+                    this.categories = response.data;
+                });
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            this.loadCategories();
         }
     }
 </script>

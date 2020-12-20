@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+      $categories = category :: latest()->get();
+    //   $categories = DB::table('categories')->get();
+      return response()->json($categories,200 );
     }
 
     /**
