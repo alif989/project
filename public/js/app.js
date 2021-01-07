@@ -2145,9 +2145,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      categories: [],
-      totalValue: 100
+      categories: []
     };
+  },
+  computed: {
+    totalCurrent: function totalCurrent() {
+      return this.categories.reduce(function (acc, cur) {
+        return acc + Number(cur.value);
+      }, 0);
+    }
   },
   methods: {
     loadCategories: function loadCategories() {
@@ -39569,7 +39575,26 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass:
+                "card-header d-flex justify-content-between align-items-center"
+            },
+            [
+              _c("h5", [_vm._v("Create Category")]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { to: { name: "category-list" } }
+                },
+                [_vm._v("Categories List ")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [
@@ -39651,7 +39676,7 @@ var render = function() {
                             "is-invalid": _vm.categoryForm.errors.has("value")
                           },
                           attrs: {
-                            type: "text",
+                            type: "number",
                             name: "value",
                             placeholder: "category value"
                           },
@@ -39677,7 +39702,7 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _vm._m(0)
                   ]
                 )
               ])
@@ -39689,25 +39714,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "card-header d-flex justify-content-between align-items-center"
-      },
-      [
-        _c("h5", [_vm._v("Create Category")]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-          _vm._v("Categories List")
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39925,7 +39931,12 @@ var render = function() {
                             "router-link",
                             {
                               staticClass: "btn btn-primary btn-sm",
-                              attrs: { to: { name: "edit-category" } }
+                              attrs: {
+                                to: {
+                                  name: "create-category",
+                                  params: { id: category.id }
+                                }
+                              }
                             },
                             [_vm._v(" Edit")]
                           ),
@@ -39954,7 +39965,7 @@ var render = function() {
                       [_vm._v("total")]
                     ),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm.totalValue))])
+                    _c("td", [_vm._v(_vm._s(_vm.totalCurrent))])
                   ])
                 ],
                 2
@@ -55720,11 +55731,11 @@ var routes = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _pages_category_index_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'category-list'
   }, {
-    path: '/category/Create',
+    path: '/category/Create/:id',
     component: _pages_category_create_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'create-category'
   }, {
-    path: '/category/edit/:slug',
+    path: '/category/edit',
     component: _pages_category_edit_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: 'edit-category'
   }]

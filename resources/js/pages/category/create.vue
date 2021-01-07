@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5>Create Category</h5>
-                        <a href="#" class="btn btn-primary">Categories List</a>
+                         <router-link :to="{name:'category-list'}" class="btn btn-primary">Categories List </router-link>
                    </div>
                     <div class="card-body">
                        <div class="row">
@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Category value</label>
-                                        <input type="text" v-model="categoryForm.value" class="form-control"  name= "value" placeholder="category value" :class="{ 'is-invalid': categoryForm.errors.has('value') }">
+                                        <input type="number" v-model="categoryForm.value" class="form-control"  name= "value" placeholder="category value" :class="{ 'is-invalid': categoryForm.errors.has('value') }">
                                         
                                          <has-error :form="categoryForm" field="value"></has-error>
                                     </div>

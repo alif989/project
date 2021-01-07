@@ -43,6 +43,7 @@ class CategoryController extends Controller
             'name' => 'required',
             'value' => 'required',
         ]);
+        
         $category = category::create(
             [
                 'name' => $request->name,

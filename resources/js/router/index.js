@@ -22,12 +22,12 @@ const routes = new VueRouter({
             name: 'category-list',
         },
         {
-            path : '/category/Create',
+            path : '/category/Create/:id',
             component: CreateCategory,
             name: 'create-category',
         },
         {
-            path : '/category/edit/:slug',
+            path : '/category/edit',
             component: EditCategory,
             name: 'edit-category',
         },
