@@ -6,14 +6,15 @@ Vue.use(VueRouter);
 import Home from '../pages/home.vue';
 import CategoryList from '../pages/category/index.vue';
 import CreateCategory from '../pages/category/create.vue';
+import EditCategory from '../pages/category/edit.vue';
 
 const routes = new VueRouter({
     mode:'history',
     routes:[
         {
-        path : '/',
-        component: Home,
-        name: 'home',
+            path : '/',
+            component: Home,
+            name: 'home',
         },
         {
             path : '/category',
@@ -21,9 +22,14 @@ const routes = new VueRouter({
             name: 'category-list',
         },
         {
-            path : '/category/Create',
+            path : '/category/Create/:id',
             component: CreateCategory,
             name: 'create-category',
+        },
+        {
+            path : '/category/edit',
+            component: EditCategory,
+            name: 'edit-category',
         },
     ]
     

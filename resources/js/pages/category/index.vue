@@ -12,21 +12,27 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th style="width:100px">ID</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Action</th>
+                                    <th>value</th>
+                                    <th style="width:170px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="category in categories" :key="category.id">
-                                    <td>{{category.id}}</td>
+                                <tr v-for="(category,i) in categories" :key="category.id">
+                                    <td style="width:100px">{{  ++i }}</td>
                                     <td>{{category.name}}</td>
                                     <td>{{category.slug}}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary btn-sm"> edit</a>
-                                        <a href="#" class="btn btn-danger btn-sm"> delete</a>
+                                    <td>{{category.value}}</td>
+                                    <td style="width:170px">
+                                      <router-link :to="{name:'create-category',params: {id: category.id}}" class="btn btn-primary btn-sm"> Edit</router-link>
+                                        <a href="#" class="btn btn-danger btn-sm"> Delete</a>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="text-align:right">total</td>
+                                    <td>{{totalCurrent}}</td>
                                 </tr>
                             </tbody>
                             
@@ -42,15 +48,21 @@
     export default {
          data(){
             return{
-                categories: [],
+                categories: [],    
             }
+        },
+        computed: {
+            totalCurrent () {
+                 return this.categories.reduce((acc, cur) => acc + Number(cur.value), 0);
+            },
         },
         methods:{
             loadCategories(){
                 axios.get('/api/category').then(response =>{
-                    this.categories = response.data;
+                    this.categories = response.data;  
                 });
-            }
+                
+            },
         },
         mounted() {
             this.loadCategories();

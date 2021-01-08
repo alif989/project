@@ -41,11 +41,14 @@ class CategoryController extends Controller
         $this->validate($request,
         [
             'name' => 'required',
+            'value' => 'required',
         ]);
+        
         $category = category::create(
             [
                 'name' => $request->name,
                 'slug' => Str:: slug($request->name),
+                'value' => Str:: slug($request->value),
             ]);
             return response()->json('success',200);
     }

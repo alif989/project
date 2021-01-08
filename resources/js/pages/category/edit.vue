@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5>Create Category</h5>
-                         <router-link :to="{name:'category-list'}" class="btn btn-primary">Categories List </router-link>
+                        <a href="#" class="btn btn-primary">Category List</a>
                    </div>
                     <div class="card-body">
                        <div class="row">
@@ -16,12 +16,6 @@
                                         <input type="text" v-model="categoryForm.name" class="form-control"  name= "name" placeholder="category name" :class="{ 'is-invalid': categoryForm.errors.has('name') }">
                                         
                                          <has-error :form="categoryForm" field="name"></has-error>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Category value</label>
-                                        <input type="number" v-model="categoryForm.value" class="form-control"  name= "value" placeholder="category value" :class="{ 'is-invalid': categoryForm.errors.has('value') }">
-                                        
-                                         <has-error :form="categoryForm" field="value"></has-error>
                                     </div>
 
                                     <div class="form-group">
@@ -44,7 +38,6 @@ import { Form } from 'vform'
             return{
                 categoryForm: new Form({
                 name :'',
-                value :'',
                 }),
             }
         },
@@ -52,17 +45,13 @@ import { Form } from 'vform'
             createCategory(){
                 
                 this.categoryForm.post('/api/category').then(({data})=>{
-                    this.categoryForm.name = '';
-                    this.categoryForm.value = '';
-                    this.$toast.success({
-                        title:'success',
-                        message:'category create successfuly'
-                        
-                    });
-                    this.$router.replace({ name: 'category-list'})
-                });
-            },
-            
+                this.categoryForm.name = '';
+                this.$toast.success({
+                    title:'success',
+                    message:'category create successfuly'
+                })
+                })
+            }
         }
     }
 </script>
