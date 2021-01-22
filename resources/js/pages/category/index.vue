@@ -26,7 +26,7 @@
                                     <td>{{category.slug}}</td>
                                     <td>{{category.value}}</td>
                                     <td style="width:170px">
-                                      <router-link :to="{name:'create-category',params: {id: category.id}}" class="btn btn-primary btn-sm"> Edit</router-link>
+                                      <router-link :to="{name:'edit-category',params: {id: category.id}}" class="btn btn-primary btn-sm"> Edit</router-link>
                                         <a href="#" class="btn btn-danger btn-sm"> Delete</a>
                                     </td>
                                 </tr>

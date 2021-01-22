@@ -17,6 +17,12 @@
                                         
                                          <has-error :form="categoryForm" field="name"></has-error>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Category value</label>
+                                        <input type="number" v-model="categoryForm.value" class="form-control"  name= "value" placeholder="category value" :class="{ 'is-invalid': categoryForm.errors.has('value') }">
+                                        
+                                         <has-error :form="categoryForm" field="value"></has-error>
+                                    </div>
 
                                     <div class="form-group">
                                      <button type="submit" class="btn btn-success"> Create Category </button>
@@ -51,7 +57,17 @@ import { Form } from 'vform'
                     message:'category create successfuly'
                 })
                 })
+            },
+            loadCategory(){
+                let id =this.$route.params.id;
+               axios.get(`/api/category/${id}/edit`).then(reponse =>{
+                    console.log(reponse);
+                });
+
             }
+        },
+        mounted(){
+            this.loadCategory();
         }
     }
 </script>

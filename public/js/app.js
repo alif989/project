@@ -2059,6 +2059,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2081,7 +2087,16 @@ __webpack_require__.r(__webpack_exports__);
           message: 'category create successfuly'
         });
       });
+    },
+    loadCategory: function loadCategory() {
+      var id = this.$route.params.id;
+      axios.get("/api/category/".concat(id, "/edit")).then(function (reponse) {
+        console.log(reponse);
+      });
     }
+  },
+  mounted: function mounted() {
+    this.loadCategory();
   }
 });
 
@@ -39814,6 +39829,52 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("label", [_vm._v("Category value")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.categoryForm.value,
+                              expression: "categoryForm.value"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.categoryForm.errors.has("value")
+                          },
+                          attrs: {
+                            type: "number",
+                            name: "value",
+                            placeholder: "category value"
+                          },
+                          domProps: { value: _vm.categoryForm.value },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.categoryForm,
+                                "value",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.categoryForm, field: "value" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
                     _vm._m(1)
                   ]
                 )
@@ -39933,7 +39994,7 @@ var render = function() {
                               staticClass: "btn btn-primary btn-sm",
                               attrs: {
                                 to: {
-                                  name: "create-category",
+                                  name: "edit-category",
                                   params: { id: category.id }
                                 }
                               }
