@@ -27,7 +27,11 @@
                                     <td>{{category.value}}</td>
                                     <td style="width:170px">
                                       <router-link :to="{name:'edit-category',params: {id: category.id}}" class="btn btn-primary btn-sm"> Edit</router-link>
+<<<<<<< HEAD
                                         <a @click.prevent="deleteCategory(category)" href="#" class="btn btn-danger btn-sm"> Delete</a>
+=======
+                                        <a href="#" class="btn btn-danger btn-sm"> Delete</a>
+>>>>>>> cc80de69168ebb3ea9b08e3ddeb071bb5dfddda2
                                     </td>
                                 </tr>
                                 <tr>

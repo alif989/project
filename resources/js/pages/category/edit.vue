@@ -17,6 +17,16 @@
                                         
                                          <has-error :form="categoryForm" field="name"></has-error>
                                     </div>
+<<<<<<< HEAD
+=======
+                                    <div class="form-group">
+                                        <label>Category value</label>
+                                        <input type="number" v-model="categoryForm.value" class="form-control"  name= "value" placeholder="category value" :class="{ 'is-invalid': categoryForm.errors.has('value') }">
+                                        
+                                         <has-error :form="categoryForm" field="value"></has-error>
+                                    </div>
+
+>>>>>>> cc80de69168ebb3ea9b08e3ddeb071bb5dfddda2
                                     <div class="form-group">
                                         <label>Category value</label>
                                         <input type="number" v-model="categoryForm.value" class="form-control"  name= "value" placeholder="category value" :class="{ 'is-invalid': categoryForm.errors.has('value') }">
@@ -47,27 +57,26 @@ import { Form } from 'vform'
             }
         },
         methods:{
-            updateCategory(){
-                let id = this.$route.params.id;
-                this.categoryForm.put(`/api/category/${id}`).then(() => {
-                    this.$toast.success({
-                        title:'Success!',
-                        message:'Category updated successfully.'
-                    });
-                });
-                this.$router.replace({ name: 'category-list'});
+            createCategory(){
+                
+                this.categoryForm.post('/api/category').then(({data})=>{
+                this.categoryForm.name = '';
+                this.$toast.success({
+                    title:'success',
+                    message:'category create successfuly'
+                })
+                })
             },
             loadCategory(){
-                let id = this.$route.params.id;
-                console.log(id);
-                axios.get(`/api/category/${id}/edit`).then(response => {
-                    this.categoryForm.name = response.data.name;
-                    this.categoryForm.value = response.data.value;
+                let id =this.$route.params.id;
+               axios.get(`/api/category/${id}/edit`).then(reponse =>{
+                    console.log(reponse);
                 });
+
             }
         },
         mounted(){
-        this.loadCategory();
-    }
+            this.loadCategory();
+        }
     }
 </script>

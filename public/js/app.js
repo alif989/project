@@ -2324,6 +2324,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2334,28 +2344,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    updateCategory: function updateCategory() {
+    createCategory: function createCategory() {
       var _this = this;
 
-      var id = this.$route.params.id;
-      this.categoryForm.put("/api/category/".concat(id)).then(function () {
+      this.categoryForm.post('/api/category').then(function (_ref) {
+        var data = _ref.data;
+        _this.categoryForm.name = '';
+
         _this.$toast.success({
-          title: 'Success!',
-          message: 'Category updated successfully.'
+          title: 'success',
+          message: 'category create successfuly'
         });
-      });
-      this.$router.replace({
-        name: 'category-list'
       });
     },
     loadCategory: function loadCategory() {
-      var _this2 = this;
-
       var id = this.$route.params.id;
-      console.log(id);
-      axios.get("/api/category/".concat(id, "/edit")).then(function (response) {
-        _this2.categoryForm.name = response.data.name;
-        _this2.categoryForm.value = response.data.value;
+      axios.get("/api/category/".concat(id, "/edit")).then(function (reponse) {
+        console.log(reponse);
       });
     }
   },
@@ -2375,6 +2380,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -40540,7 +40549,57 @@ var render = function() {
                       ],
                       1
                     ),
-                    _vm._v(" "),
+                    _vm._v(
+                      "\n<<<<<<< HEAD\n=======\n                                    "
+                    ),
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c("label", [_vm._v("Category value")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.categoryForm.value,
+                              expression: "categoryForm.value"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.categoryForm.errors.has("value")
+                          },
+                          attrs: {
+                            type: "number",
+                            name: "value",
+                            placeholder: "category value"
+                          },
+                          domProps: { value: _vm.categoryForm.value },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.categoryForm,
+                                "value",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.categoryForm, field: "value" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(
+                      "\n\n>>>>>>> cc80de69168ebb3ea9b08e3ddeb071bb5dfddda2\n                                    "
+                    ),
                     _c(
                       "div",
                       { staticClass: "form-group" },
@@ -40713,7 +40772,9 @@ var render = function() {
                             },
                             [_vm._v(" Edit")]
                           ),
-                          _vm._v(" "),
+                          _vm._v(
+                            "\n<<<<<<< HEAD\n                                        "
+                          ),
                           _c(
                             "a",
                             {
@@ -40727,6 +40788,20 @@ var render = function() {
                               }
                             },
                             [_vm._v(" Delete")]
+                          ),
+                          _vm._v(
+                            "\n=======\n                                        "
+                          ),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-danger btn-sm",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v(" Delete")]
+                          ),
+                          _vm._v(
+                            "\n>>>>>>> cc80de69168ebb3ea9b08e3ddeb071bb5dfddda2\n                                    "
                           )
                         ],
                         1
