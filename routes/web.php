@@ -20,3 +20,6 @@ Route::get('/{any?}', function () {
 Auth::routes(); 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('projects', 'ProjectController');
+Route::get('projects-db', 'ProjectController@get_db');
+Route::resource('category','CategoryController');
