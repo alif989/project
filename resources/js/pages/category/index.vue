@@ -9,7 +9,7 @@
                     </div>
                     
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                                 <tr>
                                     <th style="width:100px">Id</th>
@@ -46,11 +46,13 @@
 </template>
 
 <script>
+ 
     export default {
          data(){
             return{
                 categories: [],    
             }
+            props:['clumns','sortKey','sortOrders']
         },
         computed: {
             totalCurrent () {

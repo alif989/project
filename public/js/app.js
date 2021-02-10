@@ -2432,6 +2432,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       categories: []
     };
+
+    props: ['clumns', 'sortKey', 'sortOrders'];
   },
   computed: {
     totalCurrent: function totalCurrent() {
@@ -40734,7 +40736,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("table", { staticClass: "table" }, [
+            _c("table", { staticClass: "table", attrs: { id: "myTable" } }, [
               _vm._m(0),
               _vm._v(" "),
               _c(
