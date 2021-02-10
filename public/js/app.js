@@ -2427,9 +2427,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -40772,9 +40769,7 @@ var render = function() {
                             },
                             [_vm._v(" Edit")]
                           ),
-                          _vm._v(
-                            "\n<<<<<<< HEAD\n                                        "
-                          ),
+                          _vm._v(" "),
                           _c(
                             "a",
                             {
@@ -40788,20 +40783,6 @@ var render = function() {
                               }
                             },
                             [_vm._v(" Delete")]
-                          ),
-                          _vm._v(
-                            "\n=======\n                                        "
-                          ),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-danger btn-sm",
-                              attrs: { href: "#" }
-                            },
-                            [_vm._v(" Delete")]
-                          ),
-                          _vm._v(
-                            "\n>>>>>>> cc80de69168ebb3ea9b08e3ddeb071bb5dfddda2\n                                    "
                           )
                         ],
                         1
